@@ -21,7 +21,7 @@ public class HealthController : ControllerBase
     /// Returns health status and reads SampleConfigValue from environment
     /// </summary>
     [HttpGet(Name = "GetHealth")]
-    [ProduceResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult Get()
     {
         var sampleConfigValue = Environment.GetEnvironmentVariable("SampleConfigValue") ?? "Not configured";
@@ -48,7 +48,7 @@ public class HealthController : ControllerBase
     /// Returns all environment-based configuration
     /// </summary>
     [HttpGet("config", Name = "GetConfig")]
-    [ProduceResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult GetConfig()
     {
         var response = new
@@ -69,7 +69,7 @@ public class HealthController : ControllerBase
     /// Kubernetes-style readiness probe
     /// </summary>
     [HttpGet("ready", Name = "GetReady")]
-    [ProduceResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult GetReady()
     {
         return Ok(new { ready = true, timestamp = DateTime.UtcNow });
@@ -80,7 +80,7 @@ public class HealthController : ControllerBase
     /// Kubernetes-style liveness probe
     /// </summary>
     [HttpGet("live", Name = "GetLive")]
-    [ProduceResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult GetLive()
     {
         return Ok(new { alive = true, timestamp = DateTime.UtcNow });
